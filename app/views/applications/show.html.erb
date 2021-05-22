@@ -1,15 +1,17 @@
-<h2>Applicants</h2>
-
-<p><%= @application.name %></p>
-<p><%= @application.address %></p>
-<p><%= @application.description %></p>
-<p><%= @application.desired_pets %></p>
-<p><%= @application.status %></p>
+<h2>Applications</h2>
 
 <%= @applications.each do |application| %>
-  <p><%= application.name %></p>
-  <p><%= application.address %></p>
-  <p><%= application.city %></p>
-  <p><%= application.state %></p>
-  <p><%= application.zip_code %></p>
+  <p><strong>Name (first and last):</strong>
+    <%= application.name %></p>
+  <p><strong>Full Address:</strong>
+    <%= application.address %></p>
+    <%= application.city %>
+    <%= application.state %>
+  <p><strong>I would make a good home because:</strong>
+    <%= application.description %></p>
+  <p><strong>Name(s) of pet(s) I would like to adopt:</strong>
+    <%= application.desired_pets %></p>
+  <p><strong>Applicaiton Status</strong>
+    <%= application.status %></p></p>
+  <hr />
 <% end %>

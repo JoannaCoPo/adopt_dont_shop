@@ -5,16 +5,16 @@ RSpec.describe 'the application new' do
 
     visit '/applications/new'
 
-    fill_in('Name', with: 'Winston Bishop')
+    fill_in('Name', with: 'Bob Bishop')
     fill_in('Address', with: '1234 Adopt St')
     fill_in('City', with: 'Denver')
     fill_in('State', with: 'CO')
-    fill_in('Zip Code', with: 80220)
+    # fill_in('Zip Code', with: 80220)
     click_button('Submit')
-save_and_open_page
+# save_and_open_page
     new_application_id = Application.last
     expect(current_path).to eq("/applications/#{new_application_id.id}")
-    expect(page).to have_content('Winston Bishop')
+    expect(page).to have_content('Bob Bishop')
   end
 end
 
