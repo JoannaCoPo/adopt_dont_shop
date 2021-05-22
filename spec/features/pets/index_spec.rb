@@ -82,9 +82,6 @@ RSpec.describe 'the pets index' do
     expect(page).to_not have_content(pet_3.name)
   end
 
-  #   Then I see a link to "Start an Application"
-  # When I click this link
-  # Then I am taken to the new application page
   it 'has a link to start the application that redirects to the new appication page when clicked' do
     application = Application.create!(name: 'John Applicant', address: '1234 Turing Ave Denver, CO 81224', description: 'I have the time and space', desired_pets:'Scooby', status: 'Pending')
 
@@ -95,16 +92,4 @@ RSpec.describe 'the pets index' do
     click_link("Start an Application")
     expect(current_path).to eq('/applications/new')
   end
-
-# where I see a form
-# When I fill in this form with my:
-#   - Name
-#   - Street Address
-#   - City
-#   - State
-#   - Zip Code
-# And I click submit
-# Then I am taken to the new application's show page
-# And I see my Name, address information, and description of why I would make a good home
-# And I see an indicator that this application is "In Progress"
 end
