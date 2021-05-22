@@ -7,21 +7,19 @@ class ApplicationsController < ApplicationController
   def new
   end
 
+  # def create
+    # application = Application.create(application_params)
+  #   application.save
+    # redirect_to "/applications/#{application.id}"
+  # end
+
   def create
-    application = Application.create(application_params)
-    application.save
-    redirect_to "/applications/#{application.id}"
+    new_application = Application.new(application_params)
+    new_application.save
+    redirect_to "/applications/#{new_application.id}"
   end
 
   def application_params
-    params.permit(:name)
-    params.permit(:address)
-    params.permit(:description)
-    params.permit(:desired_pets)
-    params.permit(:created_at)
-    params.permit(:updated_at)
-    params.permit(:city)
-    params.permit(:state)
-    params.permit(:zip_code)
+    params.permit(:name, :address, :description, :desired_pets, :city, :state, :zip_code)
   end
 end
