@@ -1,5 +1,15 @@
-<%= @application.name %><br />
-<%= @application.address %><br />
-<%= @application.description %><br />
-<%= @application.desired_pets %><br />
-<%= @application.status %>
+<h2>Applicants</h2>
+
+<p><%= @application.name %></p>
+<p><%= @application.address %></p>
+<p><%= @application.description %></p>
+<p><%= @application.desired_pets %></p>
+<p><%= @application.status %></p>
+
+<%= @applications.each do |application| %>
+  <p><%= application.name %></p>
+  <p><%= application.address %></p>
+  <p><%= application.city %></p>
+  <p><%= application.state %></p>
+  <p><%= application.zip_code %></p>
+<% end %>

@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20210522015705_fix_city_order_to_applications.rb
