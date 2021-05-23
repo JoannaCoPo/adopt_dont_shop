@@ -7,19 +7,17 @@ class ApplicationsController < ApplicationController
   def new
   end
 
-  # def create
-    # application = Application.create(application_params)
-  #   application.save
-    # redirect_to "/applications/#{application.id}"
-  # end
-
   def create
     new_application = Application.new(application_params)
-    new_application.save
-    redirect_to "/applications/#{new_application.id}"
+    if new_application.save
+      redirect_to "/applications/#{new_application.id}"
+    else
+      flash[:incomplete] = 'You are missing one or more fields; please complete all fields to submit applicaiton.'
+      redirect_to '/applications/new'
+    end
   end
 
   def application_params
-    params.permit(:name, :address, :description, :desired_pets, :city, :state, :zip_code)
+    params.permit(:name, :address, :description, :desired_pets, :city, :state, :zip)
   end
 end

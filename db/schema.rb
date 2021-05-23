@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_180517) do
     t.datetime "updated_at", null: false
     t.string "city"
     t.string "state"
-    t.integer "zip_code"
+    t.integer "zip"
   end
 
   create_table "pets", force: :cascade do |t|

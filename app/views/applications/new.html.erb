@@ -1,3 +1,6 @@
+<h4>Pet Adoption Application Form:</h4>
+<p>Please fill in all fields to submit your application.</p>
+
 <%= form_with url: '/applications/', method: :post, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
@@ -11,8 +14,8 @@
   <%= form.label :state %>
   <%= form.text_field :state %>
 
-  <%= form.label :zip_code %>
-  <%= form.text_field :zip_code %>
+  <%= form.label :zip %>
+  <%= form.text_field :zip %>
 
-  <%= form.submit "Submit" %>
+  <p><%= form.submit "SUBMIT" %>
 <% end %>
