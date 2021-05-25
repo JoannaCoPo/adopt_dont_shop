@@ -1,24 +1,9 @@
 class ApplicationsController < ApplicationController
 
-  # def index
-  #   if params[:search].present?
-      # @pets = Pet.search(params[:search])
-  #   else
-  #     @pets = Pet.adoptable
-  #   end
-  # end
-
   def show
     @application = Application.find(params[:id])
-    @applications = Application.all
-    # @pets = @application.pets
     if params[:search].present?
-      @pets = Pet.where(name: params[:search])
-      require "pry"; binding.pry
-
-      redirect_to "/applications/#{@application.id}"
-    # else
-    #   @application = Application.find(params[:id])
+      @pets_search = Pet.where(name: params[:search])
     end
   end
 
@@ -32,6 +17,7 @@ class ApplicationsController < ApplicationController
     else
       flash[:incomplete] = 'You are missing one or more fields; please complete all fields to submit applicaiton.'
       redirect_to '/applications/new'
+      #consider changing to render :new per what was learned in class
     end
   end
 
