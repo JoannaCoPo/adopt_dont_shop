@@ -6,7 +6,6 @@ class CreateApplications < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :desired_pets
       t.string :status
-
       t.timestamps
     end
   end
