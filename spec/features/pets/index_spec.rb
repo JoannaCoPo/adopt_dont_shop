@@ -83,7 +83,7 @@ RSpec.describe 'the pets index' do
   end
 
   it 'has a link to start the application that redirects to the new appication page when clicked' do
-    application = Application.create!(name: 'John Applicant', address: '1234 Turing Ave Denver, CO 81224', description: 'I have the time and space', desired_pets:'Scooby', status: 'Pending')
+    application = Application.create!(name: 'Winston Bishop', address: '1234 Turing Ave', description: 'I have the time and space', desired_pets:'Ferguson', status: 'Pending', city: 'Portland', state: 'OR', zip: 92377)
 
     visit '/pets'
 

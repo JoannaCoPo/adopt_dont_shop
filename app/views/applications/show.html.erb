@@ -22,8 +22,14 @@
       <%= f.text_field :search %>
       <%= f.submit "Search" %>
     <% end %>
+
     <p>Search Results:</p>
-    <p>"#{@pets}"</p>
+    <% if @pets_search != nil %>
+      <% @pets_search.each do |pet| %>
+      <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+      <% end %>
+    <% end %>
+
   </section>
 
   <hr />
