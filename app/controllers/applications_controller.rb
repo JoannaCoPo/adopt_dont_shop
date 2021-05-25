@@ -1,7 +1,25 @@
 class ApplicationsController < ApplicationController
+
+  # def index
+  #   if params[:search].present?
+      # @pets = Pet.search(params[:search])
+  #   else
+  #     @pets = Pet.adoptable
+  #   end
+  # end
+
   def show
     @application = Application.find(params[:id])
     @applications = Application.all
+    # @pets = @application.pets
+    if params[:search].present?
+      @pets = Pet.where(name: params[:search])
+      require "pry"; binding.pry
+
+      redirect_to "/applications/#{@application.id}"
+    # else
+    #   @application = Application.find(params[:id])
+    end
   end
 
   def new
@@ -18,6 +36,6 @@ class ApplicationsController < ApplicationController
   end
 
   def application_params
-    params.permit(:name, :address, :description, :desired_pets, :city, :state, :zip)
+    params.permit(:name, :address, :description, :desired_pets, :city, :state, :zip, :search)
   end
 end

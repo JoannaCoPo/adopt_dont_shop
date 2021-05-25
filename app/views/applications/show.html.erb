@@ -1,18 +1,34 @@
-<h2>Applications</h2>
-
-<%= @applications.each do |application| %>
-  <p><strong>Name (first and last):</strong>
-    <%= application.name %></p>
-  <p><strong>Full Address:</strong>
-    <%= application.address %></p>
-    <%= application.city %>
-    <%= application.state %>
-    <%= application.zip %>
-  <p><strong>I would make a good home because:</strong>
-    <%= application.description %></p>
-  <p><strong>Name(s) of pet(s) I would like to adopt:</strong>
-    <%= application.desired_pets %></p>
-  <p><strong>Applicaiton Status</strong>
-    <%= application.status %></p></p>
+<header id="page-header">
+  <h2>Applications</h2>
+</header>
   <hr />
-<% end %>
+<main>
+  <section id="app-details">
+    <p>Name: <%= link_to @application.name, "/applications/#{@application.id}" %></p>
+    <p>Address: <%= @application.address %></p>
+    <p>City: <%= @application.city %></p>
+    <p>State: <%= @application.state %></p>
+    <p>Zip: <%= @application.zip %></p>
+    <p>Description of qualifications: <%= @application.description %></p>
+    <p>Application Status: <%= @application.status%></p>
+  </section>
+
+  <hr />
+
+  <section id="pet-search">
+    <h4>Add a Pet to this Application</h4>
+    <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
+      <%= f.label :search_for_a_pet %>
+      <%= f.text_field :search %>
+      <%= f.submit "Search" %>
+    <% end %>
+    <p>Search Results:</p>
+    <p>"#{@pets}"</p>
+  </section>
+
+  <hr />
+
+  <section id="submission">
+    <h4>Submit your application!</h4>
+  </section>
+</main>
