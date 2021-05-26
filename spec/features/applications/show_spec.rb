@@ -61,4 +61,22 @@ RSpec.describe 'the application show' do
       expect(page).to have_content('Lobster')
     end
   end
+
+  it 'displays input for description in the submission section' do
+    shelter = Shelter.create(name: 'Fancy pets of Colorado', city: 'Denver, CO', foster_program: true, rank: 10)
+    pet_1 = Pet.create(adoptable: true, age: 1, breed: 'sphynx', name: 'Lucille Bald', shelter_id: shelter.id)
+    pet_2 = Pet.create(adoptable: true, age: 3, breed: 'doberman', name: 'Lobster', shelter_id: shelter.id)
+    application = Application.create!(name: 'Winston Bishop', address: '1234 Turing Ave', description: 'I have the time and space', desired_pets:'Lobster', status: 'Pending', city: 'Portland', state: 'OR', zip: 92377)
+    visit "/applications/#{application.id}"
+
+    fill_in(:search, with: 'Lobster')
+
+    click_button('Search')
+    click_button('Adopt this Pet')
+
+    within('section#submission') do
+      expect(page).to have_content('Why will you make a good home for this pet?')
+      # expect(page).to have_button(:please_explain)
+    end
+  end
 end
