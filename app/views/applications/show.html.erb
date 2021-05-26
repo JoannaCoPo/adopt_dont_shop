@@ -44,5 +44,13 @@
 
   <section id="submission">
     <h4>Submit your application!</h4>
+    <p>This last question is required in order to submit your application.</p>
+    <p>Why will you make a good home for this pet?</p>
+    <%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |f| %>
+      <%= f.label :please_explain %>
+      <%= f.text_field :please_explain %>
+      <%= f.submit "Submit" %>
+    <% end %>
+
   </section>
 </main>
