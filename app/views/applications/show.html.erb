@@ -27,6 +27,14 @@
     <% if @pets_search != nil %>
       <% @pets_search.each do |pet| %>
       <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+      <p><%= button_to 'Adopt this Pet', "/applications/#{@application.id}/pets/#{pet.id}", :method => :patch %></p>
+      <% end %>
+    <% end %>
+
+    <b>The following pet(s) have been added to your application:</b>
+    <% if @application.pets.count > 0 %>
+      <% @application.pets.each do |pet| %>
+      <p id="added-pet"><%= "#{pet.name}" %></p>
       <% end %>
     <% end %>
 

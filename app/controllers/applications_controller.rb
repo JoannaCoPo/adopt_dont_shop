@@ -21,6 +21,15 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def add_pet_to_app
+    @application = Application.find(params[:id])
+    @pet = Pet.find(params[:pet_id])
+    @application.pets << @pet
+
+    # render :show
+    redirect_to "/applications/#{@application.id}"
+  end
+
   def application_params
     params.permit(:name, :address, :description, :desired_pets, :city, :state, :zip, :search)
   end
