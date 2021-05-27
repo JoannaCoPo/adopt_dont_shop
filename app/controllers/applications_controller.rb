@@ -21,14 +21,25 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def update
+    application = Application.find(params[:id])
+    # application.update(status: params[:status],
+    #                    status: 'Pending')
+    application.update(description: params[:description],
+                       status: 'Pending')
+    application.save
+    redirect_to "/applications/#{params[:id]}"
+  end
+
   def add_pet_to_app
     @application = Application.find(params[:id])
     @pet = Pet.find(params[:pet_id])
     @application.pets << @pet
-
     # render :show
     redirect_to "/applications/#{@application.id}"
   end
+
+  private
 
   def application_params
     params.permit(:name, :address, :description, :desired_pets, :city, :state, :zip, :search)
