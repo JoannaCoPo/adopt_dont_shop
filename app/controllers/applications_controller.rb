@@ -23,8 +23,6 @@ class ApplicationsController < ApplicationController
 
   def update
     application = Application.find(params[:id])
-    # application.update(status: params[:status],
-    #                    status: 'Pending')
     application.update(description: params[:description],
                        status: 'Pending')
     application.save
